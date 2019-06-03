@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -30,8 +30,8 @@ import com.taobao.diamond.utils.ResourceUtils;
 
 
 /**
- * Í¨Öª·şÎñ£¬ÓÃÓÚÍ¨ÖªÆäËû½Úµã
- * 
+ * é€šçŸ¥æœåŠ¡ï¼Œç”¨äºé€šçŸ¥å…¶ä»–èŠ‚ç‚¹
+ *
  * @author boyan
  * @date 2010-5-6
  */
@@ -61,7 +61,7 @@ public class NotifyService {
             nodeProperties.load(in);
         }
         catch (IOException e) {
-            log.error("¼ÓÔØ½ÚµãÅäÖÃÎÄ¼şÊ§°Ü");
+            log.error("åŠ è½½èŠ‚ç‚¹é…ç½®æ–‡ä»¶å¤±è´¥");
         }
         finally {
             try {
@@ -69,16 +69,16 @@ public class NotifyService {
                     in.close();
             }
             catch (IOException e) {
-                log.error("¹Ø±Õnode.propertiesÊ§°Ü", e);
+                log.error("å…³é—­node.propertieså¤±è´¥", e);
             }
         }
-        log.info("½ÚµãÁĞ±í:" + nodeProperties);
+        log.info("èŠ‚ç‚¹åˆ—è¡¨:" + nodeProperties);
     }
 
 
     /**
-     * Í¨ÖªÅäÖÃĞÅÏ¢¸Ä±ä
-     * 
+     * é€šçŸ¥é…ç½®ä¿¡æ¯æ”¹å˜
+     *
      * @param id
      */
     public void notifyConfigInfoChange(String dataId, String group) {
@@ -90,7 +90,7 @@ public class NotifyService {
             }
             String urlString = generateNotifyConfigInfoPath(dataId, group, address);
             final String result = invokeURL(urlString);
-            log.info("Í¨Öª½Úµã" + address + "·Ö×éĞÅÏ¢¸Ä±ä£º" + result);
+            log.info("é€šçŸ¥èŠ‚ç‚¹" + address + "åˆ†ç»„ä¿¡æ¯æ”¹å˜ï¼š" + result);
         }
     }
 
@@ -98,7 +98,7 @@ public class NotifyService {
     String generateNotifyConfigInfoPath(String dataId, String group, String address) {
         String specialUrl = this.nodeProperties.getProperty(address);
         String urlString = PROTOCOL + address + URL_PREFIX;
-        // Èç¹ûÓĞÖ¸¶¨url£¬Ê¹ÓÃÖ¸¶¨µÄurl
+        // å¦‚æœæœ‰æŒ‡å®šurlï¼Œä½¿ç”¨æŒ‡å®šçš„url
         if (specialUrl != null && StringUtils.hasLength(specialUrl.trim())) {
             urlString = specialUrl;
         }
@@ -108,8 +108,8 @@ public class NotifyService {
 
 
     /**
-     * http getµ÷ÓÃ
-     * 
+     * http getè°ƒç”¨
+     *
      * @param urlString
      * @return
      */
@@ -141,7 +141,7 @@ public class NotifyService {
 
         }
         catch (Exception e) {
-            log.error("httpµ÷ÓÃÊ§°Ü,url=" + urlString, e);
+            log.error("httpè°ƒç”¨å¤±è´¥,url=" + urlString, e);
         }
         finally {
             if (conn != null) {

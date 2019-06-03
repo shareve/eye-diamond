@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -25,8 +25,8 @@ import com.taobao.diamond.server.utils.SessionHolder;
 
 
 /**
- * ÊÚÈ¨ÑéÖ¤
- * 
+ * æˆæƒéªŒè¯
+ *
  * @author boyan
  * @date 2010-5-5
  */
@@ -43,7 +43,7 @@ public class AuthorizationFilter implements Filter {
         HttpSession session = httpRequest.getSession();
         SessionHolder.setSession(session);
         try {
-            // ÅĞ¶ÏÊÇ·ñµÇÂ¼£¬Ã»ÓĞ¾ÍÌø×ªµ½µÇÂ¼Ò³Ãæ
+            // åˆ¤æ–­æ˜¯å¦ç™»å½•ï¼Œæ²¡æœ‰å°±è·³è½¬åˆ°ç™»å½•é¡µé¢
             if (session.getAttribute("user") == null)
                 ((HttpServletResponse) response).sendRedirect(httpRequest.getContextPath() + "/jsp/login.jsp");
             else

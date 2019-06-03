@@ -24,8 +24,8 @@ import com.taobao.diamond.utils.TimeUtils;
 
 
 /**
- * Êı¾İ¿â·şÎñ£¬Ìá¹©ConfigInfoÔÚÊı¾İ¿âµÄ´æÈ¡<br>
- * 
+ * æ•°æ®åº“æœåŠ¡ï¼Œæä¾›ConfigInfoåœ¨æ•°æ®åº“çš„å­˜å–<br>
+ *
  * @author boyan
  * @author leiwen.zh
  * @since 1.0
@@ -36,9 +36,9 @@ public class PersistService {
 
     private static final String JDBC_DRIVER_NAME = "com.mysql.jdbc.Driver";
 
-    // ×î´ó¼ÇÂ¼ÌõÊı
+    // æœ€å¤§è®°å½•æ¡æ•°
     private static final int MAX_ROWS = 10000;
-    // JDBCÖ´ĞĞ³¬Ê±Ê±¼ä, µ¥Î»Ãë
+    // JDBCæ‰§è¡Œè¶…æ—¶æ—¶é—´, å•ä½ç§’
     private static final int QUERY_TIMEOUT = 2;
 
     private static final ConfigInfoRowMapper CONFIG_INFO_ROW_MAPPER = new ConfigInfoRowMapper();
@@ -68,8 +68,8 @@ public class PersistService {
 
 
     /**
-     * µ¥Ôª²âÊÔÓÃ
-     * 
+     * å•å…ƒæµ‹è¯•ç”¨
+     *
      * @return
      */
     public JdbcTemplate getJdbcTemplate() {
@@ -79,7 +79,7 @@ public class PersistService {
 
     @PostConstruct
     public void initDataSource() throws Exception {
-        // ¶ÁÈ¡jdbc.propertiesÅäÖÃ, ¼ÓÔØÊı¾İÔ´
+        // è¯»å–jdbc.propertiesé…ç½®, åŠ è½½æ•°æ®æº
         Properties props = ResourceUtils.getResourceAsProperties("jdbc.properties");
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName(JDBC_DRIVER_NAME);
@@ -91,13 +91,13 @@ public class PersistService {
         ds.setMaxIdle(Integer.parseInt(ensurePropValueNotNull(props.getProperty("db.maxIdle"))));
         ds.setMaxWait(Long.parseLong(ensurePropValueNotNull(props.getProperty("db.maxWait"))));
         ds.setPoolPreparedStatements(Boolean.parseBoolean(ensurePropValueNotNull(props
-            .getProperty("db.poolPreparedStatements"))));
+                .getProperty("db.poolPreparedStatements"))));
 
         this.jt = new JdbcTemplate();
         this.jt.setDataSource(ds);
-        // ÉèÖÃ×î´ó¼ÇÂ¼Êı£¬·ÀÖ¹ÄÚ´æÅòÕÍ
+        // è®¾ç½®æœ€å¤§è®°å½•æ•°ï¼Œé˜²æ­¢å†…å­˜è†¨èƒ€
         this.jt.setMaxRows(MAX_ROWS);
-        // ÉèÖÃJDBCÖ´ĞĞ³¬Ê±Ê±¼ä
+        // è®¾ç½®JDBCæ‰§è¡Œè¶…æ—¶æ—¶é—´
         this.jt.setQueryTimeout(QUERY_TIMEOUT);
     }
 
@@ -106,18 +106,18 @@ public class PersistService {
         final Timestamp time = TimeUtils.getCurrentTime();
 
         this.jt.update(
-            "insert into config_info (data_id,group_id,content,md5,gmt_create,gmt_modified) values(?,?,?,?,?,?)",
-            new PreparedStatementSetter() {
-                public void setValues(PreparedStatement ps) throws SQLException {
-                    int index = 1;
-                    ps.setString(index++, configInfo.getDataId());
-                    ps.setString(index++, configInfo.getGroup());
-                    ps.setString(index++, configInfo.getContent());
-                    ps.setString(index++, configInfo.getMd5());
-                    ps.setTimestamp(index++, time);
-                    ps.setTimestamp(index++, time);
-                }
-            });
+                "insert into config_info (data_id,group_id,content,md5,gmt_create,gmt_modified) values(?,?,?,?,?,?)",
+                new PreparedStatementSetter() {
+                    public void setValues(PreparedStatement ps) throws SQLException {
+                        int index = 1;
+                        ps.setString(index++, configInfo.getDataId());
+                        ps.setString(index++, configInfo.getGroup());
+                        ps.setString(index++, configInfo.getContent());
+                        ps.setString(index++, configInfo.getMd5());
+                        ps.setTimestamp(index++, time);
+                        ps.setTimestamp(index++, time);
+                    }
+                });
     }
 
 
@@ -136,28 +136,28 @@ public class PersistService {
         final Timestamp time = TimeUtils.getCurrentTime();
 
         this.jt.update("update config_info set content=?,md5=?,gmt_modified=? where data_id=? and group_id=?",
-            new PreparedStatementSetter() {
+                new PreparedStatementSetter() {
 
-                public void setValues(PreparedStatement ps) throws SQLException {
-                    int index = 1;
-                    ps.setString(index++, configInfo.getContent());
-                    ps.setString(index++, configInfo.getMd5());
-                    ps.setTimestamp(index++, time);
-                    ps.setString(index++, configInfo.getDataId());
-                    ps.setString(index++, configInfo.getGroup());
-                }
-            });
+                    public void setValues(PreparedStatement ps) throws SQLException {
+                        int index = 1;
+                        ps.setString(index++, configInfo.getContent());
+                        ps.setString(index++, configInfo.getMd5());
+                        ps.setTimestamp(index++, time);
+                        ps.setString(index++, configInfo.getDataId());
+                        ps.setString(index++, configInfo.getGroup());
+                    }
+                });
     }
 
 
     public ConfigInfo findConfigInfo(final String dataId, final String group) {
         try {
             return this.jt.queryForObject(
-                "select id,data_id,group_id,content,md5 from config_info where data_id=? and group_id=?",
-                new Object[] { dataId, group }, CONFIG_INFO_ROW_MAPPER);
+                    "select id,data_id,group_id,content,md5 from config_info where data_id=? and group_id=?",
+                    new Object[] { dataId, group }, CONFIG_INFO_ROW_MAPPER);
         }
         catch (EmptyResultDataAccessException e) {
-            // ÊÇEmptyResultDataAccessException, ±íÃ÷Êı¾İ²»´æÔÚ, ·µ»Ønull
+            // æ˜¯EmptyResultDataAccessException, è¡¨æ˜æ•°æ®ä¸å­˜åœ¨, è¿”å›null
             return null;
         }
     }
@@ -166,7 +166,7 @@ public class PersistService {
     public ConfigInfo findConfigInfo(long id) {
         try {
             return this.jt.queryForObject("select id,data_id,group_id,content,md5 from config_info where id=?",
-                new Object[] { id }, CONFIG_INFO_ROW_MAPPER);
+                    new Object[] { id }, CONFIG_INFO_ROW_MAPPER);
         }
         catch (EmptyResultDataAccessException e) {
             return null;
@@ -177,29 +177,29 @@ public class PersistService {
     public Page<ConfigInfo> findConfigInfoByDataId(final int pageNo, final int pageSize, final String dataId) {
         PaginationHelper<ConfigInfo> helper = new PaginationHelper<ConfigInfo>();
         return helper.fetchPage(this.jt, "select count(id) from config_info where data_id=?",
-            "select id,data_id,group_id,content,md5 from config_info where data_id=?", new Object[] { dataId }, pageNo,
-            pageSize, CONFIG_INFO_ROW_MAPPER);
+                "select id,data_id,group_id,content,md5 from config_info where data_id=?", new Object[] { dataId }, pageNo,
+                pageSize, CONFIG_INFO_ROW_MAPPER);
     }
 
 
     public Page<ConfigInfo> findConfigInfoByGroup(final int pageNo, final int pageSize, final String group) {
         PaginationHelper<ConfigInfo> helper = new PaginationHelper<ConfigInfo>();
         return helper.fetchPage(this.jt, "select count(id) from config_info where group_id=?",
-            "select id,data_id,group_id,content,md5 from config_info where group_id=?", new Object[] { group }, pageNo,
-            pageSize, CONFIG_INFO_ROW_MAPPER);
+                "select id,data_id,group_id,content,md5 from config_info where group_id=?", new Object[] { group }, pageNo,
+                pageSize, CONFIG_INFO_ROW_MAPPER);
     }
 
 
     public Page<ConfigInfo> findAllConfigInfo(final int pageNo, final int pageSize) {
         PaginationHelper<ConfigInfo> helper = new PaginationHelper<ConfigInfo>();
         return helper.fetchPage(this.jt, "select count(id) from config_info order by id",
-            "select id,data_id,group_id,content,md5 from config_info order by id ", new Object[] {}, pageNo, pageSize,
-            CONFIG_INFO_ROW_MAPPER);
+                "select id,data_id,group_id,content,md5 from config_info order by id ", new Object[] {}, pageNo, pageSize,
+                CONFIG_INFO_ROW_MAPPER);
     }
 
 
     public Page<ConfigInfo> findConfigInfoLike(final int pageNo, final int pageSize, final String dataId,
-            final String group) {
+                                               final String group) {
         if (StringUtils.isBlank(dataId) && StringUtils.isBlank(group)) {
             return this.findAllConfigInfo(pageNo, pageSize);
         }

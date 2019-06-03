@@ -15,8 +15,8 @@ import com.taobao.diamond.server.utils.SystemConfig;
 
 
 /**
- * 定时任务服务
- * 
+ * 瀹氭椂浠诲姟鏈嶅姟
+ *
  * @author boyan
  */
 @Service
@@ -52,7 +52,7 @@ public class TimerTaskService {
         DumpConfigInfoTask dumpTask = new DumpConfigInfoTask(this);
         dumpTask.run();
         this.scheduledExecutorService.scheduleWithFixedDelay(dumpTask, SystemConfig.getDumpConfigInterval(),
-            SystemConfig.getDumpConfigInterval(), TimeUnit.SECONDS);
+                SystemConfig.getDumpConfigInterval(), TimeUnit.SECONDS);
     }
 
 

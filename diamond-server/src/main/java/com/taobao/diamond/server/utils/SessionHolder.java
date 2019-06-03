@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * Í¨¹ýThreadLocal´«µÝHttpSession
- * 
+ * é€šè¿‡ThreadLocalä¼ é€’HttpSession
+ *
  * @author boyan
  * @date 2010-5-26
  */

@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -40,8 +40,8 @@ import com.taobao.diamond.utils.JSONUtils;
 
 
 /**
- * ¹ÜÀí¿ØÖÆÆ÷
- * 
+ * ç®¡ç†æ§åˆ¶å™¨
+ *
  * @author boyan
  * @date 2010-5-6
  */
@@ -60,23 +60,23 @@ public class AdminController {
 
     @RequestMapping(params = "method=postConfig", method = RequestMethod.POST)
     public String postConfig(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("content") String content, ModelMap modelMap) {
+                             @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                             @RequestParam("content") String content, ModelMap modelMap) {
         response.setCharacterEncoding("GBK");
 
         boolean checkSuccess = true;
-        String errorMessage = "²ÎÊı´íÎó";
+        String errorMessage = "å‚æ•°é”™è¯¯";
         if (StringUtils.isBlank(dataId) || DiamondUtils.hasInvalidChar(dataId.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄDataId";
+            errorMessage = "æ— æ•ˆçš„DataId";
         }
         if (StringUtils.isBlank(group) || DiamondUtils.hasInvalidChar(group.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄ·Ö×é";
+            errorMessage = "æ— æ•ˆçš„åˆ†ç»„";
         }
         if (StringUtils.isBlank(content)) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄÄÚÈİ";
+            errorMessage = "æ— æ•ˆçš„å†…å®¹";
         }
         if (!checkSuccess) {
             modelMap.addAttribute("message", errorMessage);
@@ -88,41 +88,41 @@ public class AdminController {
 
         this.configService.addConfigInfo(dataId, group, content);
 
-        modelMap.addAttribute("message", "Ìá½»³É¹¦!");
+        modelMap.addAttribute("message", "æäº¤æˆåŠŸ!");
         return listConfig(request, response, dataId, group, 1, 20, modelMap);
     }
 
 
     @RequestMapping(params = "method=deleteConfig", method = RequestMethod.GET)
     public String deleteConfig(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") long id,
-            ModelMap modelMap) {
-        // É¾³ıÊı¾İ
+                               ModelMap modelMap) {
+        // åˆ é™¤æ•°æ®
         this.configService.removeConfigInfo(id);
-        modelMap.addAttribute("message", "É¾³ı³É¹¦!");
+        modelMap.addAttribute("message", "åˆ é™¤æˆåŠŸ!");
         return "/admin/config/list";
     }
 
 
     @RequestMapping(params = "method=upload", method = RequestMethod.POST)
     public String upload(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("contentFile") MultipartFile contentFile, ModelMap modelMap) {
+                         @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                         @RequestParam("contentFile") MultipartFile contentFile, ModelMap modelMap) {
         response.setCharacterEncoding("GBK");
 
         boolean checkSuccess = true;
-        String errorMessage = "²ÎÊı´íÎó";
+        String errorMessage = "å‚æ•°é”™è¯¯";
         if (StringUtils.isBlank(dataId) || DiamondUtils.hasInvalidChar(dataId.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄDataId";
+            errorMessage = "æ— æ•ˆçš„DataId";
         }
         if (StringUtils.isBlank(group) || DiamondUtils.hasInvalidChar(group.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄ·Ö×é";
+            errorMessage = "æ— æ•ˆçš„åˆ†ç»„";
         }
         String content = getContentFromFile(contentFile);
         if (StringUtils.isBlank(content)) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄÄÚÈİ";
+            errorMessage = "æ— æ•ˆçš„å†…å®¹";
         }
         if (!checkSuccess) {
             modelMap.addAttribute("message", errorMessage);
@@ -130,32 +130,32 @@ public class AdminController {
         }
 
         this.configService.addConfigInfo(dataId, group, content);
-        modelMap.addAttribute("message", "Ìá½»³É¹¦!");
+        modelMap.addAttribute("message", "æäº¤æˆåŠŸ!");
         return listConfig(request, response, dataId, group, 1, 20, modelMap);
     }
 
 
     @RequestMapping(params = "method=reupload", method = RequestMethod.POST)
     public String reupload(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("contentFile") MultipartFile contentFile, ModelMap modelMap) {
+                           @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                           @RequestParam("contentFile") MultipartFile contentFile, ModelMap modelMap) {
         response.setCharacterEncoding("GBK");
 
         boolean checkSuccess = true;
-        String errorMessage = "²ÎÊı´íÎó";
+        String errorMessage = "å‚æ•°é”™è¯¯";
         String content = getContentFromFile(contentFile);
         ConfigInfo configInfo = new ConfigInfo(dataId, group, content);
         if (StringUtils.isBlank(dataId) || DiamondUtils.hasInvalidChar(dataId.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄDataId";
+            errorMessage = "æ— æ•ˆçš„DataId";
         }
         if (StringUtils.isBlank(group) || DiamondUtils.hasInvalidChar(group.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄ·Ö×é";
+            errorMessage = "æ— æ•ˆçš„åˆ†ç»„";
         }
         if (StringUtils.isBlank(content)) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄÄÚÈİ";
+            errorMessage = "æ— æ•ˆçš„å†…å®¹";
         }
         if (!checkSuccess) {
             modelMap.addAttribute("message", errorMessage);
@@ -165,7 +165,7 @@ public class AdminController {
 
         this.configService.updateConfigInfo(dataId, group, content);
 
-        modelMap.addAttribute("message", "¸üĞÂ³É¹¦!");
+        modelMap.addAttribute("message", "æ›´æ–°æˆåŠŸ!");
         return listConfig(request, response, dataId, group, 1, 20, modelMap);
     }
 
@@ -184,24 +184,24 @@ public class AdminController {
 
     @RequestMapping(params = "method=updateConfig", method = RequestMethod.POST)
     public String updateConfig(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("content") String content, ModelMap modelMap) {
+                               @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                               @RequestParam("content") String content, ModelMap modelMap) {
         response.setCharacterEncoding("GBK");
 
         ConfigInfo configInfo = new ConfigInfo(dataId, group, content);
         boolean checkSuccess = true;
-        String errorMessage = "²ÎÊı´íÎó";
+        String errorMessage = "å‚æ•°é”™è¯¯";
         if (StringUtils.isBlank(dataId) || DiamondUtils.hasInvalidChar(dataId.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄDataId";
+            errorMessage = "æ— æ•ˆçš„DataId";
         }
         if (StringUtils.isBlank(group) || DiamondUtils.hasInvalidChar(group.trim())) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄ·Ö×é";
+            errorMessage = "æ— æ•ˆçš„åˆ†ç»„";
         }
         if (StringUtils.isBlank(content)) {
             checkSuccess = false;
-            errorMessage = "ÎŞĞ§µÄÄÚÈİ";
+            errorMessage = "æ— æ•ˆçš„å†…å®¹";
         }
         if (!checkSuccess) {
             modelMap.addAttribute("message", errorMessage);
@@ -211,15 +211,15 @@ public class AdminController {
 
         this.configService.updateConfigInfo(dataId, group, content);
 
-        modelMap.addAttribute("message", "Ìá½»³É¹¦!");
+        modelMap.addAttribute("message", "æäº¤æˆåŠŸ!");
         return listConfig(request, response, dataId, group, 1, 20, modelMap);
     }
 
 
     @RequestMapping(params = "method=listConfig", method = RequestMethod.GET)
     public String listConfig(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, ModelMap modelMap) {
+                             @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                             @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, ModelMap modelMap) {
         Page<ConfigInfo> page = this.configService.findConfigInfo(pageNo, pageSize, group, dataId);
 
         String accept = request.getHeader("Accept");
@@ -229,7 +229,7 @@ public class AdminController {
                 modelMap.addAttribute("pageJson", json);
             }
             catch (Exception e) {
-                log.error("ĞòÁĞ»¯page¶ÔÏó³ö´í", e);
+                log.error("åºåˆ—åŒ–pageå¯¹è±¡å‡ºé”™", e);
             }
             return "/admin/config/list_json";
         }
@@ -244,10 +244,10 @@ public class AdminController {
 
     @RequestMapping(params = "method=listConfigLike", method = RequestMethod.GET)
     public String listConfigLike(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group,
-            @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, ModelMap modelMap) {
+                                 @RequestParam("dataId") String dataId, @RequestParam("group") String group,
+                                 @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, ModelMap modelMap) {
         if (StringUtils.isBlank(dataId) && StringUtils.isBlank(group)) {
-            modelMap.addAttribute("message", "Ä£ºı²éÑ¯ÇëÖÁÉÙÉèÖÃÒ»¸ö²éÑ¯²ÎÊı");
+            modelMap.addAttribute("message", "æ¨¡ç³ŠæŸ¥è¯¢è¯·è‡³å°‘è®¾ç½®ä¸€ä¸ªæŸ¥è¯¢å‚æ•°");
             return "/admin/config/list";
         }
         Page<ConfigInfo> page = this.configService.findConfigInfoLike(pageNo, pageSize, group, dataId);
@@ -259,7 +259,7 @@ public class AdminController {
                 modelMap.addAttribute("pageJson", json);
             }
             catch (Exception e) {
-                log.error("ĞòÁĞ»¯page¶ÔÏó³ö´í", e);
+                log.error("åºåˆ—åŒ–pageå¯¹è±¡å‡ºé”™", e);
             }
             return "/admin/config/list_json";
         }
@@ -275,7 +275,7 @@ public class AdminController {
 
     @RequestMapping(params = "method=detailConfig", method = RequestMethod.GET)
     public String getConfigInfo(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataId") String dataId, @RequestParam("group") String group, ModelMap modelMap) {
+                                @RequestParam("dataId") String dataId, @RequestParam("group") String group, ModelMap modelMap) {
         dataId = dataId.trim();
         group = group.trim();
         ConfigInfo configInfo = this.configService.findConfigInfo(dataId, group);
@@ -284,24 +284,24 @@ public class AdminController {
     }
 
 
-    // =========================== ÅúÁ¿´¦Àí ============================== //
+    // =========================== æ‰¹é‡å¤„ç† ============================== //
 
     @RequestMapping(params = "method=batchQuery", method = RequestMethod.POST)
     public String batchQuery(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("dataIds") String dataIds, @RequestParam("group") String group, ModelMap modelMap) {
+                             @RequestParam("dataIds") String dataIds, @RequestParam("group") String group, ModelMap modelMap) {
 
         response.setCharacterEncoding("GBK");
 
-        // ÕâÀïÅ×³öµÄÒì³£, »á²úÉúÒ»¸ö500´íÎó, ·µ»Ø¸øsdk, sdk»á½«500´íÎó¼ÇÂ¼µ½ÈÕÖ¾ÖĞ
+        // è¿™é‡ŒæŠ›å‡ºçš„å¼‚å¸¸, ä¼šäº§ç”Ÿä¸€ä¸ª500é”™è¯¯, è¿”å›ç»™sdk, sdkä¼šå°†500é”™è¯¯è®°å½•åˆ°æ—¥å¿—ä¸­
         if (StringUtils.isBlank(dataIds)) {
-            throw new IllegalArgumentException("ÅúÁ¿²éÑ¯, dataIds²»ÄÜÎª¿Õ");
+            throw new IllegalArgumentException("æ‰¹é‡æŸ¥è¯¢, dataIdsä¸èƒ½ä¸ºç©º");
         }
-        // group¶ÔÅúÁ¿²Ù×÷µÄÃ¿Ò»ÌõÊı¾İ¶¼ÏàÍ¬, ²»ĞèÒªÔÚforÑ­»·ÀïÃæ½øĞĞÅĞ¶Ï
+        // groupå¯¹æ‰¹é‡æ“ä½œçš„æ¯ä¸€æ¡æ•°æ®éƒ½ç›¸åŒ, ä¸éœ€è¦åœ¨forå¾ªç¯é‡Œé¢è¿›è¡Œåˆ¤æ–­
         if (StringUtils.isBlank(group)) {
-            throw new IllegalArgumentException("ÅúÁ¿²éÑ¯, group²»ÄÜÎª¿Õ»òÕß°üº¬·Ç·¨×Ö·û");
+            throw new IllegalArgumentException("æ‰¹é‡æŸ¥è¯¢, groupä¸èƒ½ä¸ºç©ºæˆ–è€…åŒ…å«éæ³•å­—ç¬¦");
         }
 
-        // ·Ö½âdataId
+        // åˆ†è§£dataId
         String[] dataIdArray = dataIds.split(Constants.WORD_SEPARATOR);
         group = group.trim();
 
@@ -318,15 +318,15 @@ public class AdminController {
                     continue;
                 }
 
-                // ²éÑ¯Êı¾İ¿â
+                // æŸ¥è¯¢æ•°æ®åº“
                 ConfigInfo configInfo = this.configService.findConfigInfo(dataId, group);
                 if (configInfo == null) {
-                    // Ã»ÓĞÒì³£, ËµÃ÷²éÑ¯³É¹¦, µ«Êı¾İ²»´æÔÚ, ÉèÖÃ²»´æÔÚµÄ×´Ì¬Âë
+                    // æ²¡æœ‰å¼‚å¸¸, è¯´æ˜æŸ¥è¯¢æˆåŠŸ, ä½†æ•°æ®ä¸å­˜åœ¨, è®¾ç½®ä¸å­˜åœ¨çš„çŠ¶æ€ç 
                     configInfoEx.setStatus(Constants.BATCH_QUERY_NONEXISTS);
                     configInfoEx.setMessage("query data does not exist");
                 }
                 else {
-                    // Ã»ÓĞÒì³£, ËµÃ÷²éÑ¯³É¹¦, ¶øÇÒÊı¾İ´æÔÚ, ÉèÖÃ´æÔÚµÄ×´Ì¬Âë
+                    // æ²¡æœ‰å¼‚å¸¸, è¯´æ˜æŸ¥è¯¢æˆåŠŸ, è€Œä¸”æ•°æ®å­˜åœ¨, è®¾ç½®å­˜åœ¨çš„çŠ¶æ€ç 
                     String content = configInfo.getContent();
                     configInfoEx.setContent(content);
                     configInfoEx.setStatus(Constants.BATCH_QUERY_EXISTS);
@@ -334,8 +334,8 @@ public class AdminController {
                 }
             }
             catch (Exception e) {
-                log.error("ÅúÁ¿²éÑ¯, ÔÚ²éÑ¯Õâ¸ödataIdÊ±³ö´í, dataId=" + dataId + ",group=" + group, e);
-                // ³öÏÖÒì³£, ÉèÖÃÒì³£×´Ì¬Âë
+                log.error("æ‰¹é‡æŸ¥è¯¢, åœ¨æŸ¥è¯¢è¿™ä¸ªdataIdæ—¶å‡ºé”™, dataId=" + dataId + ",group=" + group, e);
+                // å‡ºç°å¼‚å¸¸, è®¾ç½®å¼‚å¸¸çŠ¶æ€ç 
                 configInfoEx.setStatus(Constants.BATCH_OP_ERROR);
                 configInfoEx.setMessage("query error: " + e.getMessage());
             }
@@ -346,7 +346,7 @@ public class AdminController {
             json = JSONUtils.serializeObject(configInfoExList);
         }
         catch (Exception e) {
-            log.error("ÅúÁ¿²éÑ¯½á¹ûĞòÁĞ»¯³ö´í, json=" + json, e);
+            log.error("æ‰¹é‡æŸ¥è¯¢ç»“æœåºåˆ—åŒ–å‡ºé”™, json=" + json, e);
         }
         modelMap.addAttribute("json", json);
 
@@ -356,18 +356,18 @@ public class AdminController {
 
     @RequestMapping(params = "method=batchAddOrUpdate", method = RequestMethod.POST)
     public String batchAddOrUpdate(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("allDataIdAndContent") String allDataIdAndContent, @RequestParam("group") String group,
-            ModelMap modelMap) {
+                                   @RequestParam("allDataIdAndContent") String allDataIdAndContent, @RequestParam("group") String group,
+                                   ModelMap modelMap) {
 
         response.setCharacterEncoding("GBK");
 
-        // ÕâÀïÅ×³öµÄÒì³£, »á²úÉúÒ»¸ö500´íÎó, ·µ»Ø¸øsdk, sdk»á½«500´íÎó¼ÇÂ¼µ½ÈÕÖ¾ÖĞ
+        // è¿™é‡ŒæŠ›å‡ºçš„å¼‚å¸¸, ä¼šäº§ç”Ÿä¸€ä¸ª500é”™è¯¯, è¿”å›ç»™sdk, sdkä¼šå°†500é”™è¯¯è®°å½•åˆ°æ—¥å¿—ä¸­
         if (StringUtils.isBlank(allDataIdAndContent)) {
-            throw new IllegalArgumentException("ÅúÁ¿Ğ´, allDataIdAndContent²»ÄÜÎª¿Õ");
+            throw new IllegalArgumentException("æ‰¹é‡å†™, allDataIdAndContentä¸èƒ½ä¸ºç©º");
         }
-        // group¶ÔÅúÁ¿²Ù×÷µÄÃ¿Ò»ÌõÊı¾İ¶¼ÏàÍ¬, ²»ĞèÒªÔÚforÑ­»·ÀïÃæ½øĞĞÅĞ¶Ï
+        // groupå¯¹æ‰¹é‡æ“ä½œçš„æ¯ä¸€æ¡æ•°æ®éƒ½ç›¸åŒ, ä¸éœ€è¦åœ¨forå¾ªç¯é‡Œé¢è¿›è¡Œåˆ¤æ–­
         if (StringUtils.isBlank(group) || DiamondUtils.hasInvalidChar(group)) {
-            throw new IllegalArgumentException("ÅúÁ¿Ğ´, group²»ÄÜÎª¿Õ»òÕß°üº¬·Ç·¨×Ö·û");
+            throw new IllegalArgumentException("æ‰¹é‡å†™, groupä¸èƒ½ä¸ºç©ºæˆ–è€…åŒ…å«éæ³•å­—ç¬¦");
         }
 
         String[] dataIdAndContentArray = allDataIdAndContent.split(Constants.LINE_SEPARATOR);
@@ -383,36 +383,36 @@ public class AdminController {
             configInfoEx.setContent(content);
 
             try {
-                // ÅĞ¶ÏdataIdÊÇ·ñ°üº¬·Ç·¨×Ö·û
+                // åˆ¤æ–­dataIdæ˜¯å¦åŒ…å«éæ³•å­—ç¬¦
                 if (StringUtils.isBlank(dataId) || DiamondUtils.hasInvalidChar(dataId)) {
-                    // ÕâÀïÅ×³öµÄÒì³£, »áÔÚÏÂÃæcatch, È»ºóÉèÖÃ×´Ì¬, ±£Ö¤Ò»¸ödataIdµÄÒì³£²»»áÓ°ÏìÆäËûdataId
-                    throw new IllegalArgumentException("ÅúÁ¿Ğ´, dataId²»ÄÜ°üº¬·Ç·¨×Ö·û");
+                    // è¿™é‡ŒæŠ›å‡ºçš„å¼‚å¸¸, ä¼šåœ¨ä¸‹é¢catch, ç„¶åè®¾ç½®çŠ¶æ€, ä¿è¯ä¸€ä¸ªdataIdçš„å¼‚å¸¸ä¸ä¼šå½±å“å…¶ä»–dataId
+                    throw new IllegalArgumentException("æ‰¹é‡å†™, dataIdä¸èƒ½åŒ…å«éæ³•å­—ç¬¦");
                 }
-                // ÅĞ¶ÏÄÚÈİÊÇ·ñÎª¿Õ
+                // åˆ¤æ–­å†…å®¹æ˜¯å¦ä¸ºç©º
                 if (StringUtils.isBlank(content)) {
-                    throw new IllegalArgumentException("ÅúÁ¿Ğ´, ÄÚÈİ²»ÄÜÎª¿Õ");
+                    throw new IllegalArgumentException("æ‰¹é‡å†™, å†…å®¹ä¸èƒ½ä¸ºç©º");
                 }
 
-                // ²éÑ¯Êı¾İ¿â
+                // æŸ¥è¯¢æ•°æ®åº“
                 ConfigInfo configInfo = this.configService.findConfigInfo(dataId, group);
                 if (configInfo == null) {
-                    // Êı¾İ²»´æÔÚ, ĞÂÔö
+                    // æ•°æ®ä¸å­˜åœ¨, æ–°å¢
                     this.configService.addConfigInfo(dataId, group, content);
-                    // ĞÂÔö³É¹¦, ÉèÖÃ×´Ì¬Âë
+                    // æ–°å¢æˆåŠŸ, è®¾ç½®çŠ¶æ€ç 
                     configInfoEx.setStatus(Constants.BATCH_ADD_SUCCESS);
                     configInfoEx.setMessage("add success");
                 }
                 else {
-                    // Êı¾İ´æÔÚ, ¸üĞÂ
+                    // æ•°æ®å­˜åœ¨, æ›´æ–°
                     this.configService.updateConfigInfo(dataId, group, content);
-                    // ¸üĞÂ³É¹¦, ÉèÖÃ×´Ì¬Âë
+                    // æ›´æ–°æˆåŠŸ, è®¾ç½®çŠ¶æ€ç 
                     configInfoEx.setStatus(Constants.BATCH_UPDATE_SUCCESS);
                     configInfoEx.setMessage("update success");
                 }
             }
             catch (Exception e) {
-                log.error("ÅúÁ¿Ğ´ÕâÌõÊı¾İÊ±³ö´í, dataId=" + dataId + ",group=" + group + ",content=" + content, e);
-                // ³öÏÖÒì³£, ÉèÖÃÒì³£×´Ì¬Âë
+                log.error("æ‰¹é‡å†™è¿™æ¡æ•°æ®æ—¶å‡ºé”™, dataId=" + dataId + ",group=" + group + ",content=" + content, e);
+                // å‡ºç°å¼‚å¸¸, è®¾ç½®å¼‚å¸¸çŠ¶æ€ç 
                 configInfoEx.setStatus(Constants.BATCH_OP_ERROR);
                 configInfoEx.setMessage("batch write error: " + e.getMessage());
             }
@@ -424,7 +424,7 @@ public class AdminController {
             json = JSONUtils.serializeObject(configInfoExList);
         }
         catch (Exception e) {
-            log.error("ÅúÁ¿Ğ´, ½á¹ûĞòÁĞ»¯³ö´í, json=" + json, e);
+            log.error("æ‰¹é‡å†™, ç»“æœåºåˆ—åŒ–å‡ºé”™, json=" + json, e);
         }
         modelMap.addAttribute("json", json);
 
@@ -442,35 +442,35 @@ public class AdminController {
 
     @RequestMapping(params = "method=addUser", method = RequestMethod.POST)
     public String addUser(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap modelMap) {
+                          @RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap modelMap) {
         if (StringUtils.isBlank(userName) || DiamondUtils.hasInvalidChar(userName.trim())) {
-            modelMap.addAttribute("message", "ÎŞĞ§µÄÓÃ»§Ãû");
+            modelMap.addAttribute("message", "æ— æ•ˆçš„ç”¨æˆ·å");
             return listUser(request, response, modelMap);
         }
         if (StringUtils.isBlank(password) || DiamondUtils.hasInvalidChar(password.trim())) {
-            modelMap.addAttribute("message", "ÎŞĞ§µÄÃÜÂë");
+            modelMap.addAttribute("message", "æ— æ•ˆçš„å¯†ç ");
             return "/admin/user/new";
         }
         if (this.adminService.addUser(userName, password))
-            modelMap.addAttribute("message", "Ìí¼Ó³É¹¦!");
+            modelMap.addAttribute("message", "æ·»åŠ æˆåŠŸ!");
         else
-            modelMap.addAttribute("message", "Ìí¼ÓÊ§°Ü!");
+            modelMap.addAttribute("message", "æ·»åŠ å¤±è´¥!");
         return listUser(request, response, modelMap);
     }
 
 
     @RequestMapping(params = "method=deleteUser", method = RequestMethod.GET)
     public String deleteUser(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("userName") String userName, ModelMap modelMap) {
+                             @RequestParam("userName") String userName, ModelMap modelMap) {
         if (StringUtils.isBlank(userName) || DiamondUtils.hasInvalidChar(userName.trim())) {
-            modelMap.addAttribute("message", "ÎŞĞ§µÄÓÃ»§Ãû");
+            modelMap.addAttribute("message", "æ— æ•ˆçš„ç”¨æˆ·å");
             return listUser(request, response, modelMap);
         }
         if (this.adminService.removeUser(userName)) {
-            modelMap.addAttribute("message", "É¾³ı³É¹¦!");
+            modelMap.addAttribute("message", "åˆ é™¤æˆåŠŸ!");
         }
         else {
-            modelMap.addAttribute("message", "É¾³ıÊ§°Ü!");
+            modelMap.addAttribute("message", "åˆ é™¤å¤±è´¥!");
         }
         return listUser(request, response, modelMap);
     }
@@ -478,24 +478,24 @@ public class AdminController {
 
     @RequestMapping(params = "method=changePassword", method = RequestMethod.GET)
     public String changePassword(HttpServletRequest request, HttpServletResponse response,
-            @RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap modelMap) {
+                                 @RequestParam("userName") String userName, @RequestParam("password") String password, ModelMap modelMap) {
 
         userName = userName.trim();
         password = password.trim();
 
         if (StringUtils.isBlank(userName) || DiamondUtils.hasInvalidChar(userName.trim())) {
-            modelMap.addAttribute("message", "ÎŞĞ§µÄÓÃ»§Ãû");
+            modelMap.addAttribute("message", "æ— æ•ˆçš„ç”¨æˆ·å");
             return listUser(request, response, modelMap);
         }
         if (StringUtils.isBlank(password) || DiamondUtils.hasInvalidChar(password.trim())) {
-            modelMap.addAttribute("message", "ÎŞĞ§µÄĞÂÃÜÂë");
+            modelMap.addAttribute("message", "æ— æ•ˆçš„æ–°å¯†ç ");
             return listUser(request, response, modelMap);
         }
         if (this.adminService.updatePassword(userName, password)) {
-            modelMap.addAttribute("message", "¸ü¸Ä³É¹¦,ÏÂ´ÎµÇÂ¼ÇëÓÃĞÂÃÜÂë£¡");
+            modelMap.addAttribute("message", "æ›´æ”¹æˆåŠŸ,ä¸‹æ¬¡ç™»å½•è¯·ç”¨æ–°å¯†ç ï¼");
         }
         else {
-            modelMap.addAttribute("message", "¸ü¸ÄÊ§°Ü!");
+            modelMap.addAttribute("message", "æ›´æ”¹å¤±è´¥!");
         }
         return listUser(request, response, modelMap);
     }
@@ -504,11 +504,11 @@ public class AdminController {
     @RequestMapping(params = "method=setRefuseRequestCount", method = RequestMethod.POST)
     public String setRefuseRequestCount(@RequestParam("count") long count, ModelMap modelMap) {
         if (count <= 0) {
-            modelMap.addAttribute("message", "·Ç·¨µÄ¼ÆÊı");
+            modelMap.addAttribute("message", "éæ³•çš„è®¡æ•°");
             return "/admin/count";
         }
         GlobalCounter.getCounter().set(count);
-        modelMap.addAttribute("message", "ÉèÖÃ³É¹¦!");
+        modelMap.addAttribute("message", "è®¾ç½®æˆåŠŸ!");
         return getRefuseRequestCount(modelMap);
     }
 
@@ -521,15 +521,15 @@ public class AdminController {
 
 
     /**
-     * ÖØĞÂÎÄ¼ş¼ÓÔØÓÃ»§ĞÅÏ¢
-     * 
+     * é‡æ–°æ–‡ä»¶åŠ è½½ç”¨æˆ·ä¿¡æ¯
+     *
      * @param modelMap
      * @return
      */
     @RequestMapping(params = "method=reloadUser", method = RequestMethod.GET)
     public String reloadUser(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         this.adminService.loadUsers();
-        modelMap.addAttribute("message", "¼ÓÔØ³É¹¦!");
+        modelMap.addAttribute("message", "åŠ è½½æˆåŠŸ!");
         return listUser(request, response, modelMap);
     }
 

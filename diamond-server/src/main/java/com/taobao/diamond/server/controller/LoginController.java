@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -22,8 +22,8 @@ import com.taobao.diamond.server.service.AdminService;
 
 
 /**
- * µÇÂ¼µÇ³ö¿ØÖÆÆ÷
- * 
+ * ç™»å½•ç™»å‡ºæ§åˆ¶å™¨
+ *
  * @author boyan
  * @date 2010-5-6
  */
@@ -36,13 +36,13 @@ public class LoginController {
 
     @RequestMapping(params = "method=login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, @RequestParam("username") String username,
-            @RequestParam("password") String password, ModelMap modelMap) {
+                        @RequestParam("password") String password, ModelMap modelMap) {
         if (adminService.login(username, password)) {
             request.getSession().setAttribute("user", username);
             return "admin/admin";
         }
         else {
-            modelMap.addAttribute("message", "µÇÂ¼Ê§°Ü£¬ÓÃ»§ÃûÃÜÂë²»Æ¥Åä");
+            modelMap.addAttribute("message", "ç™»å½•å¤±è´¥ï¼Œç”¨æˆ·åå¯†ç ä¸åŒ¹é…");
             return "login";
         }
     }
