@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -12,28 +12,28 @@ package com.taobao.diamond.domain;
 import java.text.MessageFormat;
 
 /**
- * µ¥¸ödiamond»ù±¾ĞÅÏ¢ÅäÖÃÀà
- * 
+ * å•ä¸ªdiamondåŸºæœ¬ä¿¡æ¯é…ç½®ç±»
+ *
  * @filename DiamondConf.java
  * @author libinbin.pt
- * @datetime 2010-8-24 ÏÂÎç03:52:15
+ * @datetime 2010-8-24 ä¸‹åˆ03:52:15
  */
 public class DiamondConf {
 
-    // diamondServer web·ÃÎÊµØÖ·
+    // diamondServer webè®¿é—®åœ°å€
     private String diamondIp;
 
-    // diamondServer web·ÃÎÊ¶Ë¿Ú
+    // diamondServer webè®¿é—®ç«¯å£
     private String diamondPort;
 
-    // diamondServer webµÇÂ¼ÓÃ»§Ãû
+    // diamondServer webç™»å½•ç”¨æˆ·å
     private String diamondUsername;
 
-    // diamondServer webµÇÂ¼ÃÜÂë
+    // diamondServer webç™»å½•å¯†ç 
     private String diamondPassword;
     private static MessageFormat DIAMONDURL_FORMAT = new MessageFormat("http://{0}:{1}");
     public DiamondConf(){
-        
+
     }
     public DiamondConf(String diamondIp, String diamondPort, String diamondUsername, String diamondPassword) {
         this.diamondIp = diamondIp;
@@ -41,8 +41,8 @@ public class DiamondConf {
         this.diamondUsername = diamondUsername;
         this.diamondPassword = diamondPassword;
     }
-    
-    //ºÏ³Édiamond·ÃÎÊÂ·¾¶
+
+    //åˆæˆdiamondè®¿é—®è·¯å¾„
     public String getDiamondConUrl(){
         return DIAMONDURL_FORMAT.format(new String[]{this.diamondIp,this.diamondPort});
     }

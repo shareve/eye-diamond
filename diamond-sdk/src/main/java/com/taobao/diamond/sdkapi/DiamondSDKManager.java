@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -21,123 +21,123 @@ import com.taobao.diamond.domain.DiamondSDKConf;
 import com.taobao.diamond.domain.PageContextResult;
 
 /**
- * ¶¨ÒåSDK¶ÔÍâ¿ª·ÅµÄÊı¾İ·ÃÎÊ½Ó¿Ú
- * 
+ * å®šä¹‰SDKå¯¹å¤–å¼€æ”¾çš„æ•°æ®è®¿é—®æ¥å£
+ *
  * @filename DiamondSDKManager.java
  * @author libinbin.pt
- * @datetime 2010-7-16 ÏÂÎç04:03:28
- * 
+ * @datetime 2010-7-16 ä¸‹åˆ04:03:28
+ *
  *           {@link #exists(String, String, String)}
  */
 public interface DiamondSDKManager {
-	
+
 	public Map<String, DiamondSDKConf> getDiamondSDKConfMaps();
 
-	// /////////////////////////////////////////ÍÆËÍÊı¾İ½Ó¿Ú¶¨Òå////////////////////////////////////////
+	// /////////////////////////////////////////æ¨é€æ•°æ®æ¥å£å®šä¹‰////////////////////////////////////////
 	/**
-	 * Ê¹ÓÃÖ¸¶¨µÄdiamondÀ´ÍÆËÍÊı¾İ
-	 * 
+	 * ä½¿ç”¨æŒ‡å®šçš„diamondæ¥æ¨é€æ•°æ®
+	 *
 	 * @param dataId
 	 * @param groupName
 	 * @param context
 	 * @param serverId
-	 * @return ContextResult µ¥¸ö¶ÔÏó
+	 * @return ContextResult å•ä¸ªå¯¹è±¡
 	 */
 	public ContextResult pulish(String dataId, String groupName,
-			String context, String serverId);
+								String context, String serverId);
 
-	// /////////////////////////////////////////ÍÆËÍĞŞ¸ÄºóµÄÊı¾İ½Ó¿Ú¶¨Òå////////////////////////////////////////
+	// /////////////////////////////////////////æ¨é€ä¿®æ”¹åçš„æ•°æ®æ¥å£å®šä¹‰////////////////////////////////////////
 	/**
-	 * Ê¹ÓÃÖ¸¶¨µÄdiamondÀ´ÍÆËÍĞŞ¸ÄºóµÄÊı¾İ,ĞŞ¸ÄÇ°ÏÈ¼ì²éÊı¾İ´æÔÚĞÔ
-	 * 
+	 * ä½¿ç”¨æŒ‡å®šçš„diamondæ¥æ¨é€ä¿®æ”¹åçš„æ•°æ®,ä¿®æ”¹å‰å…ˆæ£€æŸ¥æ•°æ®å­˜åœ¨æ€§
+	 *
 	 * @param dataId
 	 * @param groupName
 	 * @param context
 	 * @param serverId
-	 * @return ContextResult µ¥¸ö¶ÔÏó
+	 * @return ContextResult å•ä¸ªå¯¹è±¡
 	 */
 	public ContextResult pulishAfterModified(String dataId, String groupName,
-			String context, String serverId);
+											 String context, String serverId);
 
-	// /////////////////////////////////////////Ä£ºı²éÑ¯½Ó¿Ú¶¨Òå////////////////////////////////////////
+	// /////////////////////////////////////////æ¨¡ç³ŠæŸ¥è¯¢æ¥å£å®šä¹‰////////////////////////////////////////
 	/**
-	 * ¸ù¾İÖ¸¶¨µÄ dataIdºÍ×éÃûµ½Ö¸¶¨µÄdiamondÉÏ²éÑ¯Êı¾İÁĞ±í Èç¹ûÄ£Ê½ÖĞ°üº¬·ûºÅ'*',Ôò»á×Ô¶¯Ìæ»»Îª'%'²¢Ê¹ÓÃ[ like ]Óï¾ä
-	 * Èç¹ûÄ£Ê½ÖĞ²»°üº¬·ûºÅ'*'²¢ÇÒ²»Îª¿Õ´®£¨°üÀ¨" "£©,ÔòÊ¹ÓÃ[ = ]Óï¾ä
-	 * 
+	 * æ ¹æ®æŒ‡å®šçš„ dataIdå’Œç»„ååˆ°æŒ‡å®šçš„diamondä¸ŠæŸ¥è¯¢æ•°æ®åˆ—è¡¨ å¦‚æœæ¨¡å¼ä¸­åŒ…å«ç¬¦å·'*',åˆ™ä¼šè‡ªåŠ¨æ›¿æ¢ä¸º'%'å¹¶ä½¿ç”¨[ like ]è¯­å¥
+	 * å¦‚æœæ¨¡å¼ä¸­ä¸åŒ…å«ç¬¦å·'*'å¹¶ä¸”ä¸ä¸ºç©ºä¸²ï¼ˆåŒ…æ‹¬" "ï¼‰,åˆ™ä½¿ç”¨[ = ]è¯­å¥
+	 *
 	 * @param dataIdPattern
 	 * @param groupNamePattern
 	 * @param serverId
 	 * @param currentPage
 	 * @param sizeOfPerPage
-	 * @return PageContextResult<ConfigInfo> µ¥¸ö¶ÔÏó
+	 * @return PageContextResult<ConfigInfo> å•ä¸ªå¯¹è±¡
 	 * @throws SQLException
 	 */
 	public PageContextResult<ConfigInfo> queryBy(String dataIdPattern,
-			String groupNamePattern, String serverId, long currentPage,
-			long sizeOfPerPage);
+												 String groupNamePattern, String serverId, long currentPage,
+												 long sizeOfPerPage);
 
 	/**
-	 * ¸ù¾İÖ¸¶¨µÄ dataId,×éÃûºÍcontentµ½Ö¸¶¨ÅäÖÃµÄdiamondÀ´²éÑ¯Êı¾İÁĞ±í Èç¹ûÄ£Ê½ÖĞ°üº¬·ûºÅ'*',Ôò»á×Ô¶¯Ìæ»»Îª'%'²¢Ê¹ÓÃ[
-	 * like ]Óï¾ä Èç¹ûÄ£Ê½ÖĞ²»°üº¬·ûºÅ'*'²¢ÇÒ²»Îª¿Õ´®£¨°üÀ¨" "£©,ÔòÊ¹ÓÃ[ = ]Óï¾ä
-	 * 
+	 * æ ¹æ®æŒ‡å®šçš„ dataId,ç»„åå’Œcontentåˆ°æŒ‡å®šé…ç½®çš„diamondæ¥æŸ¥è¯¢æ•°æ®åˆ—è¡¨ å¦‚æœæ¨¡å¼ä¸­åŒ…å«ç¬¦å·'*',åˆ™ä¼šè‡ªåŠ¨æ›¿æ¢ä¸º'%'å¹¶ä½¿ç”¨[
+	 * like ]è¯­å¥ å¦‚æœæ¨¡å¼ä¸­ä¸åŒ…å«ç¬¦å·'*'å¹¶ä¸”ä¸ä¸ºç©ºä¸²ï¼ˆåŒ…æ‹¬" "ï¼‰,åˆ™ä½¿ç”¨[ = ]è¯­å¥
+	 *
 	 * @param dataIdPattern
 	 * @param groupNamePattern
 	 * @param contentPattern
 	 * @param serverId
 	 * @param currentPage
 	 * @param sizeOfPerPage
-	 * @return PageContextResult<ConfigInfo> µ¥¸ö¶ÔÏó
+	 * @return PageContextResult<ConfigInfo> å•ä¸ªå¯¹è±¡
 	 * @throws SQLException
 	 */
 	public PageContextResult<ConfigInfo> queryBy(String dataIdPattern,
-			String groupNamePattern, String contentPattern, String serverId,
-			long currentPage, long sizeOfPerPage);
+												 String groupNamePattern, String contentPattern, String serverId,
+												 long currentPage, long sizeOfPerPage);
 
-	// /////////////////////////////////////////¾«È·²éÑ¯½Ó¿Ú¶¨Òå////////////////////////////////////////
+	// /////////////////////////////////////////ç²¾ç¡®æŸ¥è¯¢æ¥å£å®šä¹‰////////////////////////////////////////
 	/**
-	 * ¸ù¾İÖ¸¶¨µÄdataIdºÍ×éÃûµ½Ö¸¶¨µÄdiamondÉÏ²éÑ¯Êı¾İÁĞ±í
-	 * 
+	 * æ ¹æ®æŒ‡å®šçš„dataIdå’Œç»„ååˆ°æŒ‡å®šçš„diamondä¸ŠæŸ¥è¯¢æ•°æ®åˆ—è¡¨
+	 *
 	 * @param dataId
 	 * @param groupName
 	 * @param serverId
-	 * @return ContextResult µ¥¸ö¶ÔÏó
+	 * @return ContextResult å•ä¸ªå¯¹è±¡
 	 * @throws SQLException
 	 */
 	public ContextResult queryByDataIdAndGroupName(String dataId,
-			String groupName, String serverId);
+												   String groupName, String serverId);
 
-	// /////////////////////////////////////////ÒÆ³ıĞÅÏ¢½Ó¿Ú¶¨Òå////////////////////////////////////
+	// /////////////////////////////////////////ç§»é™¤ä¿¡æ¯æ¥å£å®šä¹‰////////////////////////////////////
 	/**
-	 * ÒÆ³ıÌØ¶¨·şÎñÆ÷ÉÏidÖ¸¶¨µÄÅäÖÃĞÅÏ¢
-	 * 
+	 * ç§»é™¤ç‰¹å®šæœåŠ¡å™¨ä¸ŠidæŒ‡å®šçš„é…ç½®ä¿¡æ¯
+	 *
 	 * @param serverId
 	 * @param id
-	 * @return ContextResult µ¥¸ö¶ÔÏó
+	 * @return ContextResult å•ä¸ªå¯¹è±¡
 	 */
 	public ContextResult unpublish(String serverId, long id);
-	
-	
+
+
 	/**
-     * ÅúÁ¿²éÑ¯
-     * 
-     * @param groupName
-     * @param dataIds
-     * @param serverId
-     * @return
-     */
-    public BatchContextResult<ConfigInfoEx> batchQuery(String serverId, String groupName, List<String> dataIds);
+	 * æ‰¹é‡æŸ¥è¯¢
+	 *
+	 * @param groupName
+	 * @param dataIds
+	 * @param serverId
+	 * @return
+	 */
+	public BatchContextResult<ConfigInfoEx> batchQuery(String serverId, String groupName, List<String> dataIds);
 
 
-    /**
-     * ÅúÁ¿ĞÂÔö»ò¸üĞÂ
-     * 
-     * @param serverId
-     * @param groupName
-     * @param dataId2ContentMap
-     *            key:dataId,value:content
-     * @return
-     */
-    public BatchContextResult<ConfigInfoEx> batchAddOrUpdate(String serverId, String groupName,
-            Map<String/* dataId */, String/* content */> dataId2ContentMap);
+	/**
+	 * æ‰¹é‡æ–°å¢æˆ–æ›´æ–°
+	 *
+	 * @param serverId
+	 * @param groupName
+	 * @param dataId2ContentMap
+	 *            key:dataId,value:content
+	 * @return
+	 */
+	public BatchContextResult<ConfigInfoEx> batchAddOrUpdate(String serverId, String groupName,
+															 Map<String/* dataId */, String/* content */> dataId2ContentMap);
 
 }

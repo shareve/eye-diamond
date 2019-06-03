@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -15,8 +15,8 @@ public class DiamondUtils {
 
 
     /**
-     * ÅĞ¶Ï×Ö·û´®ÊÇ·ñÓĞ¿Õ¸ñ
-     * 
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦æœ‰ç©ºæ ¼
+     *
      * @param str
      * @return
      */
