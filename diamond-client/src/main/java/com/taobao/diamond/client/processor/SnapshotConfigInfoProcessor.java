@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -76,8 +76,8 @@ public class SnapshotConfigInfoProcessor {
 
 
     /**
-     * 保存snapshot
-     * 
+     * 淇濆瓨snapshot
+     *
      * @param dataId
      * @param group
      * @param config
@@ -114,8 +114,8 @@ public class SnapshotConfigInfoProcessor {
 
 
     /**
-     * 删除snapshot
-     * 
+     * 鍒犻櫎snapshot
+     *
      * @param dataId
      * @param group
      */
@@ -139,7 +139,7 @@ public class SnapshotConfigInfoProcessor {
         }
         file.delete();
 
-        // 如果目录没有文件了，删除目录
+        // 濡傛灉鐩綍娌℃湁鏂囦欢浜嗭紝鍒犻櫎鐩綍
         String[] list = dir.list();
         if (list == null || list.length == 0) {
             dir.delete();

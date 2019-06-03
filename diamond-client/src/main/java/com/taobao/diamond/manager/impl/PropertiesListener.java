@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -27,7 +27,7 @@ public abstract class PropertiesListener extends ManagerListenerAdapter {
 
     public void receiveConfigInfo(String configInfo) {
         if (StringUtils.isEmpty(configInfo)) {
-            log.warn("ÊÕµ½µÄÅäÖÃĞÅÏ¢Îª¿Õ");
+            log.warn("æ”¶åˆ°çš„é…ç½®ä¿¡æ¯ä¸ºç©º");
             return;
         }
 
@@ -37,7 +37,7 @@ public abstract class PropertiesListener extends ManagerListenerAdapter {
             innerReceive(properties);
         }
         catch (IOException e) {
-            log.warn("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
+            log.warn("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
         }
 
     }

@@ -19,14 +19,14 @@ import com.taobao.diamond.utils.LoggerInit;
 
 
 /**
- * ÒµÎñ¼àÌıÆ÷µÄ¾Û¼¯¡£
- * 
+ * ä¸šåŠ¡ç›‘å¬å™¨çš„èšé›†ã€‚
+ *
  * @author leiwen.zh
- * 
+ *
  */
 public class DefaultSubscriberListener implements SubscriberListener {
 
-    // »Øµ÷ÈÕÖ¾µ¥¶À¼ÇÂ¼
+    // å›è°ƒæ—¥å¿—å•ç‹¬è®°å½•
     private static final Log dataLog = LogFactory.getLog(LoggerInit.LOG_NAME_CONFIG_DATA);
 
     private final ConcurrentMap<String/* dataId + group */, CopyOnWriteArrayList<ManagerListener>/* listeners */> allListeners =
@@ -97,7 +97,7 @@ public class DefaultSubscriberListener implements SubscriberListener {
 
 
     /**
-     * Ìí¼ÓÒ»¸öDataID¶ÔÓ¦µÄManagerListener
+     * æ·»åŠ ä¸€ä¸ªDataIDå¯¹åº”çš„ManagerListener
      */
     public void addManagerListener(String dataId, String group, ManagerListener listener) {
         List<ManagerListener> list = new ArrayList<ManagerListener>();
@@ -117,8 +117,8 @@ public class DefaultSubscriberListener implements SubscriberListener {
 
 
     /**
-     * É¾³ıÒ»¸öDataID¶ÔÓ¦µÄËùÓĞµÄManagerListeners
-     * 
+     * åˆ é™¤ä¸€ä¸ªDataIDå¯¹åº”çš„æ‰€æœ‰çš„ManagerListeners
+     *
      * @param dataId
      */
     public void removeManagerListeners(String dataId, String group) {
@@ -132,8 +132,8 @@ public class DefaultSubscriberListener implements SubscriberListener {
 
 
     /**
-     * Ìí¼ÓÒ»¸öDataID¶ÔÓ¦µÄÒ»Ğ©ManagerListener
-     * 
+     * æ·»åŠ ä¸€ä¸ªDataIDå¯¹åº”çš„ä¸€äº›ManagerListener
+     *
      * @param dataId
      * @param addListeners
      */

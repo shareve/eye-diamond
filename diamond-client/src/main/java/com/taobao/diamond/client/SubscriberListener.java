@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -15,10 +15,10 @@ import com.taobao.diamond.configinfo.ConfigureInfomation;
 
 
 /**
- * Diamond¶©ÔÄÕßµÄÅäÖÃĞÅÏ¢¼àÌıÆ÷
- * 
+ * Diamondè®¢é˜…è€…çš„é…ç½®ä¿¡æ¯ç›‘å¬å™¨
+ *
  * @author aoqiong
- * 
+ *
  */
 public interface SubscriberListener {
 
@@ -26,8 +26,8 @@ public interface SubscriberListener {
 
 
     /**
-     * ½ÓÊÕµ½Ò»´ÎÅäÖÃĞÅÏ¢
-     * 
+     * æ¥æ”¶åˆ°ä¸€æ¬¡é…ç½®ä¿¡æ¯
+     *
      * @param configureInfomation
      */
     public void receiveConfigInfo(final ConfigureInfomation configureInfomation);

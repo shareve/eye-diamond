@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -13,15 +13,15 @@ import java.io.Serializable;
 
 
 /**
- * 配置信息的类
- * 
+ * 閰嶇疆淇℃伅鐨勭被
+ *
  * @author aoqiong
- * 
+ *
  */
 public class ConfigureInfomation implements Serializable {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = 6684264073344815420L;
 

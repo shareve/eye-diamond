@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -27,10 +27,10 @@ import com.taobao.diamond.manager.ManagerListener;
 
 
 /**
- * ĞèÒª×¢ÒâµÄÊÇ£ºÒ»¸öJVMÖĞÒ»¸öDataIDÖ»ÄÜ¶ÔÓ¦Ò»¸öDiamondManager
- * 
+ * éœ€è¦æ³¨æ„çš„æ˜¯ï¼šä¸€ä¸ªJVMä¸­ä¸€ä¸ªDataIDåªèƒ½å¯¹åº”ä¸€ä¸ªDiamondManager
+ *
  * @author aoqiong
- * 
+ *
  */
 public class DefaultDiamondManager implements DiamondManager {
 
@@ -55,7 +55,7 @@ public class DefaultDiamondManager implements DiamondManager {
 
         this.managerListeners.add(managerListener);
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).addManagerListeners(this.dataId,
-            this.group, this.managerListeners);
+                this.group, this.managerListeners);
         diamondSubscriber.addDataId(this.dataId, this.group);
         diamondSubscriber.start();
 
@@ -68,8 +68,8 @@ public class DefaultDiamondManager implements DiamondManager {
 
 
     /**
-     * Ê¹ÓÃÖ¸¶¨µÄ¼¯ÈºÀàĞÍclusterType
-     * 
+     * ä½¿ç”¨æŒ‡å®šçš„é›†ç¾¤ç±»å‹clusterType
+     *
      * @param group
      * @param dataId
      * @param managerListenerList
@@ -83,7 +83,7 @@ public class DefaultDiamondManager implements DiamondManager {
 
         this.managerListeners.addAll(managerListenerList);
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).addManagerListeners(this.dataId,
-            this.group, this.managerListeners);
+                this.group, this.managerListeners);
         diamondSubscriber.addDataId(this.dataId, this.group);
         diamondSubscriber.start();
     }
@@ -94,18 +94,18 @@ public class DefaultDiamondManager implements DiamondManager {
         this.managerListeners.add(managerListener);
 
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).removeManagerListeners(this.dataId,
-            this.group);
+                this.group);
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).addManagerListeners(this.dataId,
-            this.group, this.managerListeners);
+                this.group, this.managerListeners);
     }
 
 
     public void close() {
         /**
-         * ÒòÎªÍ¬Ò»¸öDataIDÖ»ÄÜ¶ÔÓ¦Ò»¸öMnanagerListener£¬ËùÒÔ£¬¹Ø±ÕÊ±Ò»´ÎĞÔ¹Ø±ÕËùÓĞManagerListener¼´¿É
+         * å› ä¸ºåŒä¸€ä¸ªDataIDåªèƒ½å¯¹åº”ä¸€ä¸ªMnanagerListenerï¼Œæ‰€ä»¥ï¼Œå…³é—­æ—¶ä¸€æ¬¡æ€§å…³é—­æ‰€æœ‰ManagerListenerå³å¯
          */
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).removeManagerListeners(this.dataId,
-            this.group);
+                this.group);
 
         diamondSubscriber.removeDataId(dataId, group);
         if (diamondSubscriber.getDataIds().size() == 0) {
@@ -138,8 +138,8 @@ public class DefaultDiamondManager implements DiamondManager {
             return properties;
         }
         catch (IOException e) {
-            log.warn("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
-            throw new RuntimeException("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
+            log.warn("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
+            throw new RuntimeException("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
         }
     }
 
@@ -152,8 +152,8 @@ public class DefaultDiamondManager implements DiamondManager {
             return properties;
         }
         catch (IOException e) {
-            log.warn("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
-            throw new RuntimeException("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
+            log.warn("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
+            throw new RuntimeException("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
         }
     }
 
@@ -163,9 +163,9 @@ public class DefaultDiamondManager implements DiamondManager {
         this.managerListeners.addAll(managerListenerList);
 
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).removeManagerListeners(this.dataId,
-            this.group);
+                this.group);
         ((DefaultSubscriberListener) diamondSubscriber.getSubscriberListener()).addManagerListeners(this.dataId,
-            this.group, this.managerListeners);
+                this.group, this.managerListeners);
     }
 
 
@@ -187,8 +187,8 @@ public class DefaultDiamondManager implements DiamondManager {
             return properties;
         }
         catch (IOException e) {
-            log.warn("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
-            throw new RuntimeException("×°ÔØpropertiesÊ§°Ü£º" + configInfo, e);
+            log.warn("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
+            throw new RuntimeException("è£…è½½propertieså¤±è´¥ï¼š" + configInfo, e);
         }
     }
 

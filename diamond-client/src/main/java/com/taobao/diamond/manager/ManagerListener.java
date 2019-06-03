@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -13,10 +13,10 @@ import java.util.concurrent.Executor;
 
 
 /**
- * 客户如果想接收DataID对应的配置信息，需要自己实现一个监听器
- * 
+ * 瀹㈡埛濡傛灉鎯虫帴鏀禗ataID瀵瑰簲鐨勯厤缃俊鎭紝闇�瑕佽嚜宸卞疄鐜颁竴涓洃鍚櫒
+ *
  * @author aoqiong
- * 
+ *
  */
 public interface ManagerListener {
 
@@ -24,8 +24,8 @@ public interface ManagerListener {
 
 
     /**
-     * 接收配置信息
-     * 
+     * 鎺ユ敹閰嶇疆淇℃伅
+     *
      * @param configInfo
      */
     public void receiveConfigInfo(final String configInfo);

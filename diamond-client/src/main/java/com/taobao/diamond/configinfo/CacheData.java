@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -26,7 +26,7 @@ public class CacheData {
     private volatile long localConfigInfoVersion;
     private volatile boolean useLocalConfigInfo = false;
     /**
-     * Í³¼Æ³É¹¦»ñÈ¡ÅäÖÃĞÅÏ¢µÄ´ÎÊı
+     * ç»Ÿè®¡æˆåŠŸè·å–é…ç½®ä¿¡æ¯çš„æ¬¡æ•°
      */
     private final AtomicLong fetchCounter = new AtomicLong(0);
 

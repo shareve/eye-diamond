@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -10,16 +10,16 @@
 package com.taobao.diamond.client;
 
 /**
- * DiamondÊÇÒ»¸öÖ§³Ö³Ö¾ÃµÄ¿É¿¿µÄÎÄ±¾ÅäÖÃĞÅÏ¢¹ÜÀíÖĞĞÄ£¬ÓÃÓÚÎÄ±¾ÅäÖÃĞÅÏ¢µÄ¶©ÔÄ¡£<br>
- * DiamondÄ¿Ç°ÊÇÊ¹ÓÃops·¢²¼³Ö¾ÃÅäÖÃĞÅÏ¢¡£<br>
- * DiamondÓÉÓÚÊ¹ÓÃ¼¯ÖĞµÄÊı¾İ¿â±£´æ³Ö¾ÃµÄÅäÖÃĞÅÏ¢£¬ÅäÖÃĞÅÏ¢Ê®·Ö°²È«£¬²¢ÇÒ£¬DiamondÄÜ¹»Ê¹¿Í»§ÓÀÔ¶»ñÈ¡×îĞÂµÄ¶©ÔÄĞÅÏ¢¡£<br>
- * Ä¿Ç°Diamond¿Í»§¶ËÓµÓĞÈçÏÂ¼¸ÖÖ·½Ê½£º <br>
- * 1.Ö÷¶¯»ñÈ¡<br>
- * 2.¶¨Ê±»ñÈ¡<br>
- * Diamond¿Í»§¶Ë»¹Ö§³ÖÏà¶ÔÔ¶³ÌÅäÖÃĞÅÏ¢¶øÑÔ£¬ÓÅÏÈ¼¶¸ü¸ßµÄ±¾µØÅäÖÃÅäÖÃĞÅÏ¢µÄ»ñÈ¡£¨Ê¹ÓÃProperties»òÕßxml£©
- * 
+ * Diamondæ˜¯ä¸€ä¸ªæ”¯æŒæŒä¹…çš„å¯é çš„æ–‡æœ¬é…ç½®ä¿¡æ¯ç®¡ç†ä¸­å¿ƒï¼Œç”¨äºæ–‡æœ¬é…ç½®ä¿¡æ¯çš„è®¢é˜…ã€‚<br>
+ * Diamondç›®å‰æ˜¯ä½¿ç”¨opså‘å¸ƒæŒä¹…é…ç½®ä¿¡æ¯ã€‚<br>
+ * Diamondç”±äºä½¿ç”¨é›†ä¸­çš„æ•°æ®åº“ä¿å­˜æŒä¹…çš„é…ç½®ä¿¡æ¯ï¼Œé…ç½®ä¿¡æ¯ååˆ†å®‰å…¨ï¼Œå¹¶ä¸”ï¼ŒDiamondèƒ½å¤Ÿä½¿å®¢æˆ·æ°¸è¿œè·å–æœ€æ–°çš„è®¢é˜…ä¿¡æ¯ã€‚<br>
+ * ç›®å‰Diamondå®¢æˆ·ç«¯æ‹¥æœ‰å¦‚ä¸‹å‡ ç§æ–¹å¼ï¼š <br>
+ * 1.ä¸»åŠ¨è·å–<br>
+ * 2.å®šæ—¶è·å–<br>
+ * Diamondå®¢æˆ·ç«¯è¿˜æ”¯æŒç›¸å¯¹è¿œç¨‹é…ç½®ä¿¡æ¯è€Œè¨€ï¼Œä¼˜å…ˆçº§æ›´é«˜çš„æœ¬åœ°é…ç½®é…ç½®ä¿¡æ¯çš„è·å–ï¼ˆä½¿ç”¨Propertiesæˆ–è€…xmlï¼‰
+ *
  * @author aoqiong
- * 
+ *
  */
 public interface DiamondClientSub {
 

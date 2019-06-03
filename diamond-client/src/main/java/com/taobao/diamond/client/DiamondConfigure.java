@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -19,16 +19,16 @@ import com.taobao.diamond.mockserver.MockServer;
 
 
 /**
- * Diamond¿Í»§¶ËµÄÅäÖÃĞÅÏ¢
- * 
+ * Diamondå®¢æˆ·ç«¯çš„é…ç½®ä¿¡æ¯
+ *
  * @author aoqiong
- * 
+ *
  */
 public class DiamondConfigure {
 
-    private volatile int pollingIntervalTime = Constants.POLLING_INTERVAL_TIME;// Òì²½²éÑ¯µÄ¼ä¸ôÊ±¼ä
-    private volatile int onceTimeout = Constants.ONCE_TIMEOUT;// »ñÈ¡¶ÔÓÚÒ»¸öDiamondServerËù¶ÔÓ¦µÄ²éÑ¯Ò»¸öDataID¶ÔÓ¦µÄÅäÖÃĞÅÏ¢µÄTimeoutÊ±¼ä
-    private volatile int receiveWaitTime = Constants.RECV_WAIT_TIMEOUT;// Í¬²½²éÑ¯Ò»¸öDataIDËù»¨·ÑµÄÊ±¼ä
+    private volatile int pollingIntervalTime = Constants.POLLING_INTERVAL_TIME;// å¼‚æ­¥æŸ¥è¯¢çš„é—´éš”æ—¶é—´
+    private volatile int onceTimeout = Constants.ONCE_TIMEOUT;// è·å–å¯¹äºä¸€ä¸ªDiamondServeræ‰€å¯¹åº”çš„æŸ¥è¯¢ä¸€ä¸ªDataIDå¯¹åº”çš„é…ç½®ä¿¡æ¯çš„Timeoutæ—¶é—´
+    private volatile int receiveWaitTime = Constants.RECV_WAIT_TIMEOUT;// åŒæ­¥æŸ¥è¯¢ä¸€ä¸ªDataIDæ‰€èŠ±è´¹çš„æ—¶é—´
 
     private volatile List<String> domainNameList = new LinkedList<String>();
 
@@ -36,20 +36,20 @@ public class DiamondConfigure {
 
     private boolean localFirst = false;
 
-    // ÒÔÏÂ²ÎÊı²»Ö§³ÖÔËĞĞºó¶¯Ì¬¸üĞÂ
+    // ä»¥ä¸‹å‚æ•°ä¸æ”¯æŒè¿è¡ŒååŠ¨æ€æ›´æ–°
     private int maxHostConnections = 1;
     private boolean connectionStaleCheckingEnabled = true;
     private int maxTotalConnections = 20;
     private int connectionTimeout = Constants.CONN_TIMEOUT;
     private int port = Constants.DEFAULT_PORT;
     private int scheduledThreadPoolSize = 1;
-    // »ñÈ¡Êı¾İÊ±µÄÖØÊÔ´ÎÊı
+    // è·å–æ•°æ®æ—¶çš„é‡è¯•æ¬¡æ•°
     private int retrieveDataRetryTimes = Integer.MAX_VALUE / 10;
 
     private String configServerAddress = null;
     private int configServerPort = Constants.DEFAULT_PORT;
 
-    // ±¾µØÊı¾İ±£´æÂ·¾¶
+    // æœ¬åœ°æ•°æ®ä¿å­˜è·¯å¾„
     private String filePath;
 
 
@@ -59,14 +59,14 @@ public class DiamondConfigure {
         dir.mkdirs();
 
         if (!dir.exists()) {
-            throw new RuntimeException("´´½¨diamondÄ¿Â¼Ê§°Ü£º" + filePath);
+            throw new RuntimeException("åˆ›å»ºdiamondç›®å½•å¤±è´¥ï¼š" + filePath);
         }
     }
 
 
     /**
-     * »ñÈ¡ºÍÍ¬Ò»¸öDiamondServerµÄ×î´óÁ¬½ÓÊı
-     * 
+     * è·å–å’ŒåŒä¸€ä¸ªDiamondServerçš„æœ€å¤§è¿æ¥æ•°
+     *
      * @return
      */
     public int getMaxHostConnections() {
@@ -75,9 +75,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃºÍÍ¬Ò»¸öDiamondServerµÄ×î´óÁ¬½ÓÊı<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®å’ŒåŒä¸€ä¸ªDiamondServerçš„æœ€å¤§è¿æ¥æ•°<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param maxHostConnections
      */
     public void setMaxHostConnections(int maxHostConnections) {
@@ -86,9 +86,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÊÇ·ñÔÊĞí¶Ô³Â¾ÉµÄÁ¬½ÓÇé¿ö½øĞĞ¼ì²â¡£<br>
-     * Èç¹û²»¼ì²â£¬ĞÔÄÜÉÏ»áÓĞËùÌáÉı£¬µ«ÊÇ£¬»áÓĞÊ¹ÓÃ²»¿ÉÓÃÁ¬½ÓµÄ·çÏÕµ¼ÖÂµÄIO Exception
-     * 
+     * æ˜¯å¦å…è®¸å¯¹é™ˆæ—§çš„è¿æ¥æƒ…å†µè¿›è¡Œæ£€æµ‹ã€‚<br>
+     * å¦‚æœä¸æ£€æµ‹ï¼Œæ€§èƒ½ä¸Šä¼šæœ‰æ‰€æå‡ï¼Œä½†æ˜¯ï¼Œä¼šæœ‰ä½¿ç”¨ä¸å¯ç”¨è¿æ¥çš„é£é™©å¯¼è‡´çš„IO Exception
+     *
      * @return
      */
     public boolean isConnectionStaleCheckingEnabled() {
@@ -97,9 +97,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÊÇ·ñÔÊĞí¶Ô³Â¾ÉµÄÁ¬½ÓÇé¿ö½øĞĞ¼ì²â¡£<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®æ˜¯å¦å…è®¸å¯¹é™ˆæ—§çš„è¿æ¥æƒ…å†µè¿›è¡Œæ£€æµ‹ã€‚<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param connectionStaleCheckingEnabled
      */
     public void setConnectionStaleCheckingEnabled(boolean connectionStaleCheckingEnabled) {
@@ -108,8 +108,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡ÔÊĞíµÄ×î´óµÄÁ¬½ÓÊıÁ¿¡£
-     * 
+     * è·å–å…è®¸çš„æœ€å¤§çš„è¿æ¥æ•°é‡ã€‚
+     *
      * @return
      */
     public int getMaxTotalConnections() {
@@ -118,9 +118,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÔÊĞíµÄ×î´óµÄÁ¬½ÓÊıÁ¿¡£<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®å…è®¸çš„æœ€å¤§çš„è¿æ¥æ•°é‡ã€‚<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param maxTotalConnections
      */
     public void setMaxTotalConnections(int maxTotalConnections) {
@@ -129,10 +129,10 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡ÂÖÑ¯µÄ¼ä¸ôÊ±¼ä¡£µ¥Î»£ºÃë<br>
-     * ´Ë¼ä¸ôÊ±¼ä´ú±íÂÖÑ¯²éÕÒÒ»´ÎÅäÖÃĞÅÏ¢µÄ¼ä¸ôÊ±¼ä£¬¶ÔÓÚÈİÔÖÏà¹Ø£¬ÇëÉèÖÃ¶ÌÒ»Ğ©£»<br>
-     * ¶ÔÓÚÆäËû²»¿É±äµÄÅäÖÃĞÅÏ¢£¬ÇëÉèÖÃ³¤Ò»Ğ©
-     * 
+     * è·å–è½®è¯¢çš„é—´éš”æ—¶é—´ã€‚å•ä½ï¼šç§’<br>
+     * æ­¤é—´éš”æ—¶é—´ä»£è¡¨è½®è¯¢æŸ¥æ‰¾ä¸€æ¬¡é…ç½®ä¿¡æ¯çš„é—´éš”æ—¶é—´ï¼Œå¯¹äºå®¹ç¾ç›¸å…³ï¼Œè¯·è®¾ç½®çŸ­ä¸€äº›ï¼›<br>
+     * å¯¹äºå…¶ä»–ä¸å¯å˜çš„é…ç½®ä¿¡æ¯ï¼Œè¯·è®¾ç½®é•¿ä¸€äº›
+     *
      * @return
      */
     public int getPollingIntervalTime() {
@@ -141,8 +141,8 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÂÖÑ¯µÄ¼ä¸ôÊ±¼ä¡£µ¥Î»£ºÃë
-     * 
+     * è®¾ç½®è½®è¯¢çš„é—´éš”æ—¶é—´ã€‚å•ä½ï¼šç§’
+     *
      * @param pollingIntervalTime
      */
     public void setPollingIntervalTime(int pollingIntervalTime) {
@@ -154,8 +154,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡µ±Ç°Ö§³ÖµÄËùÓĞµÄDiamondServerÓòÃûÁĞ±í
-     * 
+     * è·å–å½“å‰æ”¯æŒçš„æ‰€æœ‰çš„DiamondServeråŸŸååˆ—è¡¨
+     *
      * @return
      */
     public List<String> getDomainNameList() {
@@ -164,8 +164,8 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃµ±Ç°Ö§³ÖµÄËùÓĞµÄDiamondServerÓòÃûÁĞ±í£¬µ±ÉèÖÃÁËÓòÃûÁĞ±íºó£¬È±Ê¡µÄÓòÃûÁĞ±í½«Ê§Ğ§
-     * 
+     * è®¾ç½®å½“å‰æ”¯æŒçš„æ‰€æœ‰çš„DiamondServeråŸŸååˆ—è¡¨ï¼Œå½“è®¾ç½®äº†åŸŸååˆ—è¡¨åï¼Œç¼ºçœçš„åŸŸååˆ—è¡¨å°†å¤±æ•ˆ
+     *
      * @param domainNameList
      */
     public void setDomainNameList(List<String> domainNameList) {
@@ -177,8 +177,8 @@ public class DiamondConfigure {
 
 
     /**
-     * Ìí¼ÓÒ»¸öDiamondServerÓòÃû£¬µ±ÉèÖÃÁËÓòÃûÁĞ±íºó£¬È±Ê¡µÄÓòÃûÁĞ±í½«Ê§Ğ§
-     * 
+     * æ·»åŠ ä¸€ä¸ªDiamondServeråŸŸåï¼Œå½“è®¾ç½®äº†åŸŸååˆ—è¡¨åï¼Œç¼ºçœçš„åŸŸååˆ—è¡¨å°†å¤±æ•ˆ
+     *
      * @param domainName
      */
     public void addDomainName(String domainName) {
@@ -190,8 +190,8 @@ public class DiamondConfigure {
 
 
     /**
-     * Ìí¼Ó¶à¸öDiamondServerÓòÃû£¬µ±ÉèÖÃÁËÓòÃûÁĞ±íºó£¬È±Ê¡µÄÓòÃûÁĞ±í½«Ê§Ğ§
-     * 
+     * æ·»åŠ å¤šä¸ªDiamondServeråŸŸåï¼Œå½“è®¾ç½®äº†åŸŸååˆ—è¡¨åï¼Œç¼ºçœçš„åŸŸååˆ—è¡¨å°†å¤±æ•ˆ
+     *
      * @param domainNameList
      */
     public void addDomainNames(Collection<String> domainNameList) {
@@ -203,8 +203,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡DiamondServerµÄ¶Ë¿ÚºÅ
-     * 
+     * è·å–DiamondServerçš„ç«¯å£å·
+     *
      * @return
      */
     public int getPort() {
@@ -213,9 +213,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃDiamondServerµÄ¶Ë¿ÚºÅ<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®DiamondServerçš„ç«¯å£å·<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param port
      */
     public void setPort(int port) {
@@ -224,8 +224,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡Ì½²â±¾µØÎÄ¼şµÄÂ·¾¶
-     * 
+     * è·å–æ¢æµ‹æœ¬åœ°æ–‡ä»¶çš„è·¯å¾„
+     *
      * @return
      */
     public String getFilePath() {
@@ -234,9 +234,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÌ½²â±¾µØÎÄ¼şµÄÂ·¾¶<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®æ¢æµ‹æœ¬åœ°æ–‡ä»¶çš„è·¯å¾„<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param filePath
      */
     public void setFilePath(String filePath) {
@@ -245,10 +245,10 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡¶ÔÓÚÒ»¸öDiamondServerËù¶ÔÓ¦µÄ²éÑ¯Ò»¸öDataID¶ÔÓ¦µÄÅäÖÃĞÅÏ¢µÄTimeoutÊ±¼ä<br>
-     * ¼´Ò»´ÎHTTPÇëÇóµÄ³¬Ê±Ê±¼ä<br>
-     * µ¥Î»£ººÁÃë<br>
-     * 
+     * è·å–å¯¹äºä¸€ä¸ªDiamondServeræ‰€å¯¹åº”çš„æŸ¥è¯¢ä¸€ä¸ªDataIDå¯¹åº”çš„é…ç½®ä¿¡æ¯çš„Timeoutæ—¶é—´<br>
+     * å³ä¸€æ¬¡HTTPè¯·æ±‚çš„è¶…æ—¶æ—¶é—´<br>
+     * å•ä½ï¼šæ¯«ç§’<br>
+     *
      * @return
      */
     public int getOnceTimeout() {
@@ -257,10 +257,10 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃ¶ÔÓÚÒ»¸öDiamondServerËù¶ÔÓ¦µÄ²éÑ¯Ò»¸öDataID¶ÔÓ¦µÄÅäÖÃĞÅÏ¢µÄTimeoutÊ±¼ä<br>
-     * µ¥Î»£ººÁÃë<br>
-     * ÅäÖÃĞÅÏ¢Ô½´ó£¬Çë½«´ËÖµÉèÖÃµÃÔ½´ó
-     * 
+     * è®¾ç½®å¯¹äºä¸€ä¸ªDiamondServeræ‰€å¯¹åº”çš„æŸ¥è¯¢ä¸€ä¸ªDataIDå¯¹åº”çš„é…ç½®ä¿¡æ¯çš„Timeoutæ—¶é—´<br>
+     * å•ä½ï¼šæ¯«ç§’<br>
+     * é…ç½®ä¿¡æ¯è¶Šå¤§ï¼Œè¯·å°†æ­¤å€¼è®¾ç½®å¾—è¶Šå¤§
+     *
      * @return
      */
     public void setOnceTimeout(int onceTimeout) {
@@ -269,8 +269,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡ºÍDiamondServerµÄÁ¬½Ó½¨Á¢³¬Ê±Ê±¼ä¡£µ¥Î»£ººÁÃë
-     * 
+     * è·å–å’ŒDiamondServerçš„è¿æ¥å»ºç«‹è¶…æ—¶æ—¶é—´ã€‚å•ä½ï¼šæ¯«ç§’
+     *
      * @return
      */
     public int getConnectionTimeout() {
@@ -279,9 +279,9 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃºÍDiamondServerµÄÁ¬½Ó½¨Á¢³¬Ê±Ê±¼ä¡£µ¥Î»£ººÁÃë<br>
-     * ²»Ö§³ÖÔËĞĞÊ±¶¯Ì¬¸üĞÂ
-     * 
+     * è®¾ç½®å’ŒDiamondServerçš„è¿æ¥å»ºç«‹è¶…æ—¶æ—¶é—´ã€‚å•ä½ï¼šæ¯«ç§’<br>
+     * ä¸æ”¯æŒè¿è¡Œæ—¶åŠ¨æ€æ›´æ–°
+     *
      * @param connectionTimeout
      */
     public void setConnectionTimeout(int connectionTimeout) {
@@ -290,9 +290,9 @@ public class DiamondConfigure {
 
 
     /**
-     * Í¬²½²éÑ¯Ò»¸öDataIDµÄ×î³¤µÈ´ıÊ±¼ä<br>
-     * Êµ¼Ê×î³¤µÈ´ıÊ±¼äĞ¡ÓÚreceiveWaitTime + min(connectionTimeout, onceTimeout)
-     * 
+     * åŒæ­¥æŸ¥è¯¢ä¸€ä¸ªDataIDçš„æœ€é•¿ç­‰å¾…æ—¶é—´<br>
+     * å®é™…æœ€é•¿ç­‰å¾…æ—¶é—´å°äºreceiveWaitTime + min(connectionTimeout, onceTimeout)
+     *
      * @return
      */
     public int getReceiveWaitTime() {
@@ -301,10 +301,10 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÒ»¸öDataIDµÄ×î³¤µÈ´ıÊ±¼ä<br>
-     * Êµ¼Ê×î³¤µÈ´ıÊ±¼äĞ¡ÓÚreceiveWaitTime + min(connectionTimeout, onceTimeout)
-     * ½¨Òé´ËÖµÉèÖÃÎªOnceTimeout * £¨DomainName¸öÊı + 1£©
-     * 
+     * è®¾ç½®ä¸€ä¸ªDataIDçš„æœ€é•¿ç­‰å¾…æ—¶é—´<br>
+     * å®é™…æœ€é•¿ç­‰å¾…æ—¶é—´å°äºreceiveWaitTime + min(connectionTimeout, onceTimeout)
+     * å»ºè®®æ­¤å€¼è®¾ç½®ä¸ºOnceTimeout * ï¼ˆDomainNameä¸ªæ•° + 1ï¼‰
+     *
      * @param receiveWaitTime
      */
     public void setReceiveWaitTime(int receiveWaitTime) {
@@ -313,8 +313,8 @@ public class DiamondConfigure {
 
 
     /**
-     * »ñÈ¡Ïß³Ì³ØµÄÏß³ÌÊıÁ¿
-     * 
+     * è·å–çº¿ç¨‹æ± çš„çº¿ç¨‹æ•°é‡
+     *
      * @return
      */
     public int getScheduledThreadPoolSize() {
@@ -323,8 +323,8 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÏß³Ì³ØµÄÏß³ÌÊıÁ¿£¬È±Ê¡Îª1
-     * 
+     * è®¾ç½®çº¿ç¨‹æ± çš„çº¿ç¨‹æ•°é‡ï¼Œç¼ºçœä¸º1
+     *
      * @param scheduledThreadPoolSize
      */
     public void setScheduledThreadPoolSize(int scheduledThreadPoolSize) {
@@ -333,8 +333,8 @@ public class DiamondConfigure {
 
 
     /**
-     * ÊÇ·ñÊ¹ÓÃÍ¬²½½Ó¿ÚÁ÷¿Ø
-     * 
+     * æ˜¯å¦ä½¿ç”¨åŒæ­¥æ¥å£æµæ§
+     *
      * @return
      */
     public boolean isUseFlowControl() {
@@ -343,8 +343,8 @@ public class DiamondConfigure {
 
 
     /**
-     * ÉèÖÃÊÇ·ñÊ¹ÓÃÍ¬²½½Ó¿ÚÁ÷¿Ø
-     * 
+     * è®¾ç½®æ˜¯å¦ä½¿ç”¨åŒæ­¥æ¥å£æµæ§
+     *
      * @param useFlowControl
      */
     public void setUseFlowControl(boolean useFlowControl) {
