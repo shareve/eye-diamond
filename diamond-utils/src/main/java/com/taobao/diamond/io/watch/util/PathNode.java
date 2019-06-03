@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -16,10 +16,10 @@ import com.taobao.diamond.io.Path;
 
 
 /**
- * 树形目录结构的节点，缓存lastModified
- * 
+ * 鏍戝舰鐩綍缁撴瀯鐨勮妭鐐癸紝缂撳瓨lastModified
+ *
  * @author boyan
- * 
+ *
  */
 public class PathNode {
     private List<PathNode> children;

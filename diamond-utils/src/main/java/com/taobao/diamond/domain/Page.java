@@ -1,6 +1,6 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
  * published by the Free Software Foundation.
@@ -15,8 +15,8 @@ import java.util.List;
 
 
 /**
- * ·ÖÒ³¶ÔÏó
- * 
+ * åˆ†é¡µå¯¹è±¡
+ *
  * @author boyan
  * @date 2010-5-6
  * @param <E>
@@ -24,10 +24,10 @@ import java.util.List;
 public class Page<E> implements Serializable {
     static final long serialVersionUID = -1L;
 
-    private int totalCount; // ×Ü¼ÇÂ¼Êý
-    private int pageNumber; // Ò³Êý
-    private int pagesAvailable; // ×ÜÒ³Êý
-    private List<E> pageItems = new ArrayList<E>(); // ¸ÃÒ³ÄÚÈÝ
+    private int totalCount; // æ€»è®°å½•æ•°
+    private int pageNumber; // é¡µæ•°
+    private int pagesAvailable; // æ€»é¡µæ•°
+    private List<E> pageItems = new ArrayList<E>(); // è¯¥é¡µå†…å®¹
 
 
     public void setPageNumber(int pageNumber) {
