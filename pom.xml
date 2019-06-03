@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<inceptionYear>2010</inceptionYear>
 	<groupId>com.taobao.diamond</groupId>
-	<artifactId>diamond-all</artifactId>
+	<artifactId>eye-diamond</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.5.4.taocode-SNAPSHOT</version>
+	<version>1.0.0.EYE-SNAPSHOT</version>
 	<name>taobao diamond v${project.version}</name>
 
 	<properties>
