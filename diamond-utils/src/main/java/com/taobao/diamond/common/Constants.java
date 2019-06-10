@@ -19,7 +19,7 @@ public class Constants {
 
     public static final String DAILY_DOMAINNAME = "d.e.f";
 
-    public static final int DEFAULT_PORT = 0;
+    public static final int DEFAULT_PORT = 8080;
 
     public static final String NULL = "";
 
@@ -53,13 +53,13 @@ public class Constants {
 
     public static final int RECV_WAIT_TIMEOUT = ONCE_TIMEOUT * 5;// 毫秒
 
-    public static final String HTTP_URI_FILE = "/url";
+    public static final String HTTP_URI_FILE = "/config.co";
 
     public static final String CONFIG_HTTP_URI_FILE = "/url";
 
     public static final String HTTP_URI_LOGIN = "/url";
 
-    public static final String ENCODE = "GBK";
+    public static final String ENCODE = "UTF-8";
 
     public static final String LINE_SEPARATOR = Character.toString((char) 1);
 
