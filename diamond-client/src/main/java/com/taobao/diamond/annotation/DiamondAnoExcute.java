@@ -13,15 +13,15 @@ public class DiamondAnoExcute {
 
     private static final Log logger = LogFactory.getLog(DiamondAnoExcute.class);
 
-    public static void goAways(Class<?> ... testClasses) {
+    public static void goAway(Class<?> ... testClasses) {
 
         for(Class<?> testClass : testClasses){
-            goAway(testClass);
+            goAwayOneClass(testClass);
         }
 
     }
 
-    public static void goAway(Class<?> testClass) {
+    private static void goAwayOneClass(Class<?> testClass) {
 
         Field[] fields = testClass.getDeclaredFields();
 
